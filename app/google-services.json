@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "893238167861",
+    "firebase_url": "https://campuscarpoolingproject2.firebaseio.com",
+    "project_id": "campuscarpoolingproject2",
+    "storage_bucket": "campuscarpoolingproject2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893238167861:android:b48fa614ddef1831",
+        "android_client_info": {
+          "package_name": "com.example.arnold.campuscarpoolingproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893238167861-4u13akbf8vn6d7f3ln6emjd7i3afejh7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.arnold.campuscarpoolingproject",
+            "certificate_hash": "5bb7aafc90cbb39c22ad97a249421cc6a7a9efe5"
+          }
+        },
+        {
+          "client_id": "893238167861-plgpqnjbqfiv8bijndqiekspg2tihg68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1QtjUhqDbd4MWE1zqOkLq8N4dF_FqFEg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893238167861-plgpqnjbqfiv8bijndqiekspg2tihg68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
