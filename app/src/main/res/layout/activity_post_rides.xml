@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/postRides"
             android:hint="POST A RIDE"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -25,6 +26,11 @@
             android:hint="DESTINATION"
 
             />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/time"
+            android:hint="DEPARTURE TIME"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

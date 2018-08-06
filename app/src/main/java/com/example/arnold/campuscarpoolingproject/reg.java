@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,115 +22,92 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class reg extends AppCompatActivity implements View.OnClickListener {
+public class reg extends AppCompatActivity {
+    private EditText mail, pass;
+    private Button regIN;
 
-    EditText userName,location,email,deptID,password,comfirpass,preference,phone,carPlate,userType;
-    Button register;
-    TextView login;
+    private ProgressBar progressBar;
 
-    private ProgressDialog progressDialog;
-    DatabaseReference databaseUser;
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth mAuth;
 
-    String mStatusTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
-        //Get Firebase auth instance
-        firebaseAuth = FirebaseAuth.getInstance();
 
-        databaseUser = FirebaseDatabase.getInstance().getReference("User");
+        mAuth = FirebaseAuth.getInstance();
 
-        userName = findViewById(R.id.userName);
-        location = findViewById(R.id.location);
-        email = findViewById(R.id.email);
-        deptID = findViewById(R.id.deptID);
-        password = findViewById(R.id.password);
-        comfirpass = findViewById(R.id.comfirpass);
-        preference = findViewById(R.id.preference);
-        phone = findViewById(R.id.phone);
-        carPlate = findViewById(R.id.carPlate);
-        userType = findViewById(R.id.userType);
-        register = findViewById(R.id.register);
-        login = findViewById(R.id.login);
 
-        progressDialog = new ProgressDialog(this);
 
-        register.setOnClickListener(new View.OnClickListener() {
+        regIN = findViewById(R.id.regIN);
+        mail = findViewById(R.id.mail);
+        pass = findViewById(R.id.pass);
+
+
+
+        regIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerUser();
-
+                finish();
             }
         });
+        regIN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = mail.getText().toString().trim();
+                String password = pass.getText().toString().trim();
 
-    }
-    private void registerUser(){
-        String Username = userName.getText().toString().trim();
-        String Location = location.getText().toString().trim();
-        String Email = email.getText().toString().trim();
-        String DepartmentID = deptID.getText().toString().trim();
-        String Password = password.getText().toString().trim();
-        String ComfirmPass = comfirpass.getText().toString().trim();
-        String Preference = preference.getText().toString().trim();
-        String Phone = phone.getText().toString().trim();
-        String UserType = userType.getText().toString().trim();
-        String CarPlate = carPlate.getText().toString().trim();
-
-        if (!TextUtils.isEmpty(Username) || (password.getText().toString().trim() !=  comfirpass.getText().toString().trim()) ||
-                (!TextUtils.isEmpty(Location)) || (!TextUtils.isEmpty(Email)) || (!TextUtils.isEmpty(DepartmentID)) || (!TextUtils.isEmpty(Password)) ||
-                (!TextUtils.isEmpty(Preference)) || (!TextUtils.isEmpty(Phone)) || (!TextUtils.isEmpty(UserType)) || (!TextUtils.isEmpty(CarPlate)))
-        {
-            String id = databaseUser.push().getKey();
-
-            //declaring a new user
-            User user = new User(id,Username,Location,Email,DepartmentID,Password,Preference,Phone,UserType,CarPlate);
-
-            databaseUser.child(id).setValue(user);
-            Toast.makeText(this,"user added",Toast.LENGTH_LONG).show();
-
-
-        }else {
-            Toast.makeText(this,"Check you inputs and try again", Toast.LENGTH_LONG).show();
-        }
-
-        progressDialog.setMessage("registering user....");
-        progressDialog.show();
-
-
-
-        //create user
-        firebaseAuth.createUserWithEmailAndPassword(Email,Password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if (task.isSuccessful()){
-                            //start user profile
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), userProfile.class));
-                        }else {
-                            //Toast.makeText(login.this, "login failed !", Toast.LENGTH_LONG).show();
-                            Exception e = task.getException();
-                            if (e != null){
-                                Log.e("reg", e.getMessage(), e);
-                                mStatusTextView = e.getMessage();
-                            }
-
-                    }
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                });
+                if (password.length() < 6) {
+                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+//                progressBar.setVisibility(View.VISIBLE);
+                //create new user
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(reg.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                Toast.makeText(reg.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                //  progressBar.setVisibility(View.GONE);
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(reg.this, "Authentication failed." + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    startActivity(new Intent(reg.this, login.class));
+                                    finish();
+                                }
+                            }
+                        });
+            }
+
+        });
     }
-
-
-
+/*    @Override
+    protected void onResume() {
+        super.onResume();
+        progressBar.setVisibility(View.GONE);
+    }*/
 
     @Override
-    public void onClick(View view) {
+    protected void onStart() {
+        super.onStart();
 
+        if (mAuth.getCurrentUser() != null) {
+            //handle the already login user
+        }
     }
 }

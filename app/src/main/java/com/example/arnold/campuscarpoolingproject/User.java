@@ -2,35 +2,26 @@ package com.example.arnold.campuscarpoolingproject;
 
 public class User {
     String id;
-    String username;
-    String userLocation;
-    String userEmail;
-    String userDepartmentID;
-    String userPassword;
-    String userComfirmPass;
-    String userPreference;
-    String userPhone;
-    String userCarplate;
-    String typeofuser;
+    String destination;
+    String time;
+    String from;
+    String noPassengers;
+    String price;
+
 
     public User(){
 
     }
 
-    public User(String idd, String username, String userLocation, String userEmail, String userDepartmentID,
-                String userPassword, String userPreference, String userPhone,
-                String userCarplate, String typeofUser) {
-        this.id = idd;
-        this.username = username;
-        this.userLocation = userLocation;
-        this.userEmail = userEmail;
-        this.userDepartmentID = userDepartmentID;
-        this.userPassword = userPassword;
-         this.userPreference = userPreference;
-        this.userPhone = userPhone;
-        this.userCarplate = userCarplate;
-        this.typeofuser = typeofUser;
-    }
+    public User(String id, String destination, String time, String from, String noPassengers,
+                String price) {
+        this.id = id;
+        this.destination = destination;
+        this.time = time;
+        this.from = from;
+        this.noPassengers = noPassengers;
+        this.price = price;
+        }
 //
 //    public User(String id, String username, String location, String email,
 //                String departmentID, String password, String comfirmPass, String preference,
@@ -42,45 +33,24 @@ public class User {
         return id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getDestination() {
+        return destination;
     }
 
-    public String getUserLocation() {
-        return userLocation;
+    public String getTime() {
+        return time;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getFrom() {
+        return from;
     }
 
-    public String getUserDepartmentID() {
-        return userDepartmentID;
+    public String getNoPassengers() {
+        return noPassengers;
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public String getUserComfirmPass() {
-        return userComfirmPass;
-    }
-
-    public String getUserPreference() {
-        return userPreference;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public String getUserCarplate() {
-        return userCarplate;
-    }
-
-
-    public String getTypeofuser() {
-        return typeofuser;
+    public String getPrice() {
+        return price;
     }
 }
 

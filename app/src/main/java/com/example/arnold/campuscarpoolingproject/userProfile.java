@@ -69,5 +69,11 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
             //starting login activity
             startActivity(new Intent(this, login.class));
         }
+
+        if(view == postBtn){
+            finish();
+            startActivity(new Intent(this, postRides.class));
+
+        }
     }
 }
