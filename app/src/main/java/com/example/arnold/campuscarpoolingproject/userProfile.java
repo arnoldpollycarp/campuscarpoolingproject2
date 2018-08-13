@@ -75,5 +75,10 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
             startActivity(new Intent(this, postRides.class));
 
         }
+        if (view == viewBtn){
+            finish();
+            startActivity(new Intent(this, content.class));
+
+        }
     }
 }

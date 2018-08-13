@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ public class postRides extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
-    DatabaseReference databaseUser;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class postRides extends AppCompatActivity {
         setContentView(R.layout.activity_post_rides);
 
         mAuth = FirebaseAuth.getInstance();
-        databaseUser = FirebaseDatabase.getInstance().getReference("User");
+        databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
         destination = findViewById(R.id.destination);
         time = findViewById(R.id.time);
@@ -41,40 +42,46 @@ public class postRides extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        post.setOnClickListener(new View.OnClickListener() {
+        /*post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addRide();
             }
-        });
+        });*/
 
     }
-    private void addRide(){
-        String Destination = destination.getText().toString().trim();
-        String Time = time.getText().toString().trim();
-        String From = from.getText().toString().trim();
-        String Nopassengers = noPassengers.getText().toString().trim();
-        String Price = price.getText().toString().trim();
+
+    public void addRide(View v){
+        try{
+            String Destination = destination.getText().toString().trim();
+            String Time = time.getText().toString().trim();
+            String From = from.getText().toString().trim();
+            String Nopassengers = noPassengers.getText().toString().trim();
+            String Price = price.getText().toString().trim();
 
 
-        if (!TextUtils.isEmpty(Destination) || (!TextUtils.isEmpty(Time)) || (!TextUtils.isEmpty(From))
-                || (!TextUtils.isEmpty(Nopassengers))
-                ||
-                (!TextUtils.isEmpty(Price)))
-        {
-            String id = databaseUser.push().getKey();
-            //declaring a new user
-            User user = new User(id,Destination,Time,From,Nopassengers,Price);
+            if (!TextUtils.isEmpty(Destination) &&
+                    !TextUtils.isEmpty(Time) &&
+                    !TextUtils.isEmpty(From) &&
+                    !TextUtils.isEmpty(Nopassengers) &&
+                    !TextUtils.isEmpty(Price)) {
 
-            databaseUser.child(id).setValue(user);
-            Toast.makeText(this,"ride added", Toast.LENGTH_LONG).show();
+                String id = databaseReference.push().getKey();
+                //declaring a new user
+                User user = new User(Destination, Time, From, Nopassengers, Price);
 
+                databaseReference.child(id).setValue(user);
 
-        }else {
-            Toast.makeText(this,"Check you inputs and try again", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"ride added", Toast.LENGTH_LONG).show();
+
+            }else {
+                Toast.makeText(this,"Check you inputs and try again", Toast.LENGTH_LONG).show();
+            }
+
+            progressDialog.setMessage("adding trip....");
+            progressDialog.show();
+        }catch (Exception e){
+            Log.e("PostRides", e.getMessage(), e);
         }
-        progressDialog.setMessage("adding trip....");
-        progressDialog.show();
-
     }
 }

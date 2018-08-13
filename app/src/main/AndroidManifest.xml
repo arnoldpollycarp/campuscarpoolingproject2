@@ -18,11 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".postRides"/>
-        <activity android:name=".userProfile"/>
-        <activity android:name=".login"/>
-        <activity android:name=".reg"/>
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".postRides" />
+        <activity android:name=".userProfile" />
+        <activity android:name=".login" />
+        <activity android:name=".reg" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".content" />
+        <activity android:name=".view" />
+        <activity android:name=".listingadapter"></activity>
     </application>
 
 </manifest>

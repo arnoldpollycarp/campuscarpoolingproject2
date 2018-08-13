@@ -51,10 +51,12 @@
             android:hint="COST PER SEAT"
 
             />
+
         <Button
+            android:id="@+id/post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/post"
-            android:hint="POST"/>
+            android:hint="POST"
+            android:onClick="addRide" />
     </LinearLayout>
 </RelativeLayout>
