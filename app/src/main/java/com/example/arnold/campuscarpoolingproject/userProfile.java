@@ -15,7 +15,7 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
 
     private Button logout;
     private Button viewBtn;
-    private Button historyBtn;
+    private Button payment;
     private Button postBtn;
     private ImageView userPic;
     TextView emailTxt;
@@ -49,12 +49,12 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
 
         logout = findViewById(R.id.logout);
         viewBtn = findViewById(R.id.viewBtn);
-        historyBtn = findViewById(R.id.historyBtn);
+        payment = findViewById(R.id.historyBtn);
         postBtn = findViewById(R.id.postBtn);
 
         logout.setOnClickListener(this);
         viewBtn.setOnClickListener(this);
-        historyBtn.setOnClickListener(this);
+        payment.setOnClickListener(this);
         postBtn.setOnClickListener(this);
     }
 

@@ -16,7 +16,7 @@
             android:id="@+id/userPic"
             android:layout_width="196dp"
             android:layout_height="179dp"
-
+            android:src="@drawable/face_pic"
             android:layout_marginLeft="100dp"
             />
         <TextView
@@ -42,11 +42,11 @@
             android:text="VIEW A RIDE" />
 
         <Button
-            android:id="@+id/historyBtn"
+            android:id="@+id/payment"
             android:layout_width="252dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:text="RIDE HISTORY" />
+            android:text="PAYMENT" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
