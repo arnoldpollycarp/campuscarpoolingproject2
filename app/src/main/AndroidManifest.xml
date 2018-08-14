@@ -25,7 +25,8 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".content" />
         <activity android:name=".view" />
-        <activity android:name=".listingadapter"></activity>
+        <activity android:name=".listingadapter" />
+        <activity android:name=".joinTrip"></activity>
     </application>
 
 </manifest>

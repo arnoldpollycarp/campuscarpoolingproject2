@@ -44,11 +44,7 @@ public class reg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
 
-
-
         mAuth = FirebaseAuth.getInstance();
-
-
 
         regIN = findViewById(R.id.regIN);
         mail = findViewById(R.id.mail);

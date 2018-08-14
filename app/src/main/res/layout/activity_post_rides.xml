@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".postRides">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/destination"
+            android:inputType="text"
             android:hint="DESTINATION"
 
             />
@@ -30,16 +35,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/time"
+            android:inputType="time"
             android:hint="DEPARTURE TIME"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/from"
+            android:inputType="text"
             android:hint="FROM"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:id="@+id/noPassengers"
             android:hint="NUMBER OF PASSENGERS"
 
@@ -47,6 +55,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:id="@+id/price"
             android:hint="COST PER SEAT"
 
@@ -58,5 +67,7 @@
             android:layout_height="wrap_content"
             android:hint="POST"
             android:onClick="addRide" />
+
     </LinearLayout>
+</ScrollView>
 </RelativeLayout>
