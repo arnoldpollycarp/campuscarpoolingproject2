@@ -26,7 +26,8 @@
         <activity android:name=".content" />
         <activity android:name=".view" />
         <activity android:name=".listingadapter" />
-        <activity android:name=".joinTrip"></activity>
+        <activity android:name=".joinTrip" />
+        <activity android:name=".retrieve"></activity>
     </application>
 
 </manifest>

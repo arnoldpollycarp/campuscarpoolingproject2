@@ -19,10 +19,15 @@ public class postRides extends AppCompatActivity {
      EditText destination,time,from,noPassengers,price;
      TextView postRides;
      Button post;
+    private static String  id;
 
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     DatabaseReference databaseReference;
+
+    public static String getId() {
+        return id;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,7 @@ public class postRides extends AppCompatActivity {
         postRides = findViewById(R.id.postRides);
         post = findViewById(R.id.post);
 
-        progressDialog = new ProgressDialog(this);
+       // progressDialog = new ProgressDialog(this);
 
         /*post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,20 +71,20 @@ public class postRides extends AppCompatActivity {
                     !TextUtils.isEmpty(Nopassengers) &&
                     !TextUtils.isEmpty(Price)) {
 
-                String id = databaseReference.push().getKey();
+                 id = databaseReference.push().getKey();
                 //declaring a new user
                 User user = new User(Destination, Time, From, Nopassengers, Price);
 
                 databaseReference.child(id).setValue(user);
 
-                Toast.makeText(this,"ride added", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"ride added", Toast.LENGTH_SHORT).show();
 
             }else {
-                Toast.makeText(this,"Check you inputs and try again", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Check you inputs and try again", Toast.LENGTH_SHORT).show();
             }
 
-            progressDialog.setMessage("adding trip....");
-            progressDialog.show();
+          //  progressDialog.setMessage("adding trip....");
+            //progressDialog.show();
         }catch (Exception e){
             Log.e("PostRides", e.getMessage(), e);
         }

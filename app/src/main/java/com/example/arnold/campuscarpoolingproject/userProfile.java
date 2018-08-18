@@ -49,7 +49,7 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
 
         logout = findViewById(R.id.logout);
         viewBtn = findViewById(R.id.viewBtn);
-        payment = findViewById(R.id.historyBtn);
+        payment = findViewById(R.id.payment);
         postBtn = findViewById(R.id.postBtn);
 
         logout.setOnClickListener(this);
@@ -77,7 +77,7 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
         }
         if (view == viewBtn){
             finish();
-            startActivity(new Intent(this, content.class));
+            startActivity(new Intent(this, retrieve.class));
 
         }
     }
