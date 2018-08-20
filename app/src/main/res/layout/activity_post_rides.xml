@@ -48,14 +48,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:id="@+id/noPassengers"
-            android:hint="NUMBER OF PASSENGERS"
+            android:id="@+id/seats_available"
+            android:hint="SEATS AVAILABLE"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/car_plate"
+            android:hint="CAR PLATE NUMBER"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:id="@+id/name"
+            android:hint="DRIVERS NAME"
 
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:id="@+id/drivers_tel"
+            android:hint="DRIVERS PHONE NUMBER"
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/price"
             android:hint="COST PER SEAT"
 

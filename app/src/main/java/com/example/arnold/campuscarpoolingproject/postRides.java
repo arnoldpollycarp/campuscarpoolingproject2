@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class postRides extends AppCompatActivity {
-     EditText destination,time,from,noPassengers,price;
+     EditText destination,time,from,seats_available,price,drivers_tel,car_plate,name;
      TextView postRides;
      Button post;
     private static String  id;
@@ -35,12 +35,15 @@ public class postRides extends AppCompatActivity {
         setContentView(R.layout.activity_post_rides);
 
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("User");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Trip");
 
         destination = findViewById(R.id.destination);
+        car_plate = findViewById(R.id.car_plate);
+        name = findViewById(R.id.name);
+        drivers_tel = findViewById(R.id.drivers_tel);
         time = findViewById(R.id.time);
         from = findViewById(R.id.from);
-        noPassengers = findViewById(R.id.noPassengers);
+        seats_available = findViewById(R.id.seats_available);
         price = findViewById(R.id.price);
         postRides = findViewById(R.id.postRides);
         post = findViewById(R.id.post);
@@ -61,21 +64,27 @@ public class postRides extends AppCompatActivity {
             String Destination = destination.getText().toString().trim();
             String Time = time.getText().toString().trim();
             String From = from.getText().toString().trim();
-            String Nopassengers = noPassengers.getText().toString().trim();
+            String Seats_available = seats_available.getText().toString().trim();
             String Price = price.getText().toString().trim();
+            String Name = name.getText().toString().trim();
+            String Car_plate = car_plate.getText().toString().trim();
+            String Drivers_tel = drivers_tel.getText().toString().trim();
 
 
             if (!TextUtils.isEmpty(Destination) &&
                     !TextUtils.isEmpty(Time) &&
                     !TextUtils.isEmpty(From) &&
-                    !TextUtils.isEmpty(Nopassengers) &&
-                    !TextUtils.isEmpty(Price)) {
+                    !TextUtils.isEmpty(Seats_available) &&
+                    !TextUtils.isEmpty(Price) &&
+                    !TextUtils.isEmpty(Name) &&
+                    !TextUtils.isEmpty(Car_plate) &&
+                    !TextUtils.isEmpty(Drivers_tel)) {
 
                  id = databaseReference.push().getKey();
                 //declaring a new user
-                User user = new User(Destination, Time, From, Nopassengers, Price);
+                Trip trip = new Trip(Destination, Time, From, Seats_available, Price,Name, Car_plate, Drivers_tel);
 
-                databaseReference.child(id).setValue(user);
+                databaseReference.child(id).setValue(trip);
 
                 Toast.makeText(this,"ride added", Toast.LENGTH_SHORT).show();
 

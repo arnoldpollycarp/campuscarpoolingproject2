@@ -80,5 +80,10 @@ public class userProfile extends AppCompatActivity implements View.OnClickListen
             startActivity(new Intent(this, retrieve.class));
 
         }
+        if (view == payment){
+            finish();
+            startActivity(new Intent(this, payment1.class));
+
+        }
     }
 }

@@ -5,7 +5,8 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,5 +14,59 @@
         android:textSize="25sp"
         android:textStyle="bold"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:inputType="time"
+        android:hint="DEPARTURE TIME"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/from"
+        android:inputType="text"
+        android:hint="FROM"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/seats_available"
+        android:hint="SEATS AVAILABLE"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/car_plate"
+        android:hint="CAR PLATE NUMBER"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/name"
+        android:hint="DRIVERS NAME"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/drivers_tel"
+        android:hint="DRIVERS PHONE NUMBER"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/price"
+        android:hint="COST PER SEAT"
+
+        />
+
+
+
 </LinearLayout>
 </android.support.constraint.ConstraintLayout>
